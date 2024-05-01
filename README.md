@@ -1,6 +1,26 @@
-# Getting Started with Create React App
+# Image Gallery App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A custom made website for a painter, with publicly open part serving as an image gallery and an owner-only-access dashboard to add/remove/edit paintings.
+Application was created using React and Firebase (storage, database, auth).
+
+The most interesting aspects:
+- images added are automatically resized, converted to webp file format and saved to Firebase storage bucket. After that, a custom Blushash is created. The blurhash code, along with chosen category and added description and image url link are saved to Firebase database. When retriving the images with slow connection firstly a Blurhash version is being loaded, creating more pleasant experience for the end user. All images are being lazy loaded.
+- the editing panel can be accessed only by the owner (using Firebase auth) - there the owner themselves can alter the website content.
+
+## Images
+
+![Main-page-01](https://github.com/mklimczak93/image-gallery/assets/123643355/fdfc94b7-1e1e-4815-9eb2-d59852f13839)
+Main page - desktop view
+
+![Main-page-02](https://github.com/mklimczak93/image-gallery/assets/123643355/c5f8c688-79fa-462a-adf2-22371636bf12)
+Main page - tablet view
+
+![Main-page-03](https://github.com/mklimczak93/image-gallery/assets/123643355/9fc18c48-6220-40e9-b8fe-973ea9bf33e1)
+Main page - mobile view
+
+![Add-01](https://github.com/mklimczak93/image-gallery/assets/123643355/c27bb937-c693-4f1c-9626-d6df08758836)
+Editing dashboard - tablet view
+
 
 ## Available Scripts
 
@@ -29,42 +49,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
