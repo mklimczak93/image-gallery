@@ -17,6 +17,7 @@ export default function ImageComponent(props) {
     //     setImageDetail(true)
     // }
 
+
     return (
         <div className="image-composition">
             <img src={LoupeIcon} className="icon loupe-icon" alt="Magnifying glass icon - visible on hover"/>
