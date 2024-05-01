@@ -28,7 +28,7 @@ export default function HomePage() {
         } else {
             const querySnapshot = await getDocs(paintings)
             const paintingObjects = querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
-            console.log(paintingObjects)
+            //console.log(paintingObjects)
             const paintingsElements = paintingObjects.map((el) => {
                 return(<div className="relative" onClick = { ()=>{popupImage(el)} }>
                     <ImageComponent key={el.id} src={el.Link} alt={el.Category + 'image'} blurhash={el.Blurhash} />
@@ -78,7 +78,7 @@ export default function HomePage() {
 
     //function of enlarging image/making it popup
     function popupImage(image) {
-        console.log('Popup')
+        //console.log('Popup')
         setPaintingToEnlarge(image);
     }
     function closeImage() {

@@ -17,7 +17,15 @@ export default function Navbar() {
             setIsMenuOpen(true)
         }
     })
-
+    //close the menu onload && once you detect the window.width < 500
+    window.addEventListener("load", () => {
+        if (window.innerWidth < 500) {
+            console.log('Closing menu because of small screen')
+            setIsMenuOpen(false)
+        } else {
+            setIsMenuOpen(true)
+        }
+    })
     const handleMobileMenu = () => {
         if (window.innerWidth < 500) {
             if (isMenuOpen === true) {

@@ -51,7 +51,7 @@ export default function AddPaintingPage() {
         } else {
             const querySnapshot = await getDocs(paintings)
             const paintingObjects = querySnapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
-            console.log(paintingObjects)
+            //console.log(paintingObjects)
             const paintingsElements = paintingObjects.map((el) => {
                 return(<div className="relative" onClick = { ()=>{popupImage(el.id, el.Link, el.Category, el.Description)} }>
                     <ImageComponent key={el.id} src={el.Link} alt={el.Category + 'image'} blurhash={el.Blurhash} />
@@ -84,14 +84,12 @@ export default function AddPaintingPage() {
     },[])
 
     const handleDelete = async (id) => {
-        console.log('Deleting painting: ', paintingToEnlarge)
         const docToDelete = doc(db, 'paintings', id);
         await deleteDoc(docToDelete);
         setMessage('Obraz został usunięty.');
     }
     const handleEdit = async (e, id) => {
         e.preventDefault();
-        console.log('Editing painting')
         const docToEdit = doc(db, 'paintings', id);
         if (!category) {
             setMessage('Wybierz kategorię.')
@@ -125,7 +123,6 @@ export default function AddPaintingPage() {
 
     //function of enlarging image/making it popup
     function popupImage(id, link, category, description) {
-        console.log('Popup')
         setPaintingToEnlarge({id: id, link: link, category: category, description: description});
     }
     function closeImage() {
@@ -152,7 +149,6 @@ export default function AddPaintingPage() {
         .then(() => {
             //auth context
             logout();
-            console.log('User signed out')
         })
         .catch((error) => {
             console.log(error.message)
@@ -215,7 +211,6 @@ export default function AddPaintingPage() {
     //adding images
     const handleUpload = async (e) => {
         e.preventDefault();
-        console.log('Submitting an image');
         //checking all fields
         if (imageUpload === null) {
             setMessage('Wybierz obraz z dysku.');
@@ -230,13 +225,13 @@ export default function AddPaintingPage() {
         const imageRef = ref(storage, `images/${imageName}`);
 
         //tempURL needed for webp & blurhash
-        console.log(imageUpload)
+        //console.log(imageUpload)
         const tempURL = URL.createObjectURL(imageUpload);
-        console.log('TempURL: ', tempURL)
+        //console.log('TempURL: ', tempURL)
 
         //getting image size for webp/size conversion
         const loadedImage = await loadImage(tempURL);
-        console.log('Loaded image: ', loadedImage);
+        //console.log('Loaded image: ', loadedImage);
         const loadedImageData = getImageData(loadedImage);
         const actualHeight = loadedImageData.height;
         const actualWidth = loadedImageData.width;
@@ -254,12 +249,12 @@ export default function AddPaintingPage() {
             desiredHeight = 800
             desiredWidth = 800
         }
-        console.log('Actual dimensions: ', actualHeight, actualWidth)
-        console.log('Desired image dimensions: ', desiredHeight, desiredWidth)
+        //console.log('Actual dimensions: ', actualHeight, actualWidth)
+        //console.log('Desired image dimensions: ', desiredHeight, desiredWidth)
 
         //convert upload to webp
         const webpBlob = await srcToWebP(tempURL, {desiredHeight, desiredWidth})
-        console.log('Webp created: ', webpBlob)
+        //console.log('Webp created: ', webpBlob)
 
         //uploading to Firebase storage
         await uploadBytes(imageRef, webpBlob);
@@ -267,14 +262,14 @@ export default function AddPaintingPage() {
 
         //getting URL
         const url = await getDownloadURL(ref(storage, imageRef));
-        console.log('Download URL created: ', url)
+        //console.log('Download URL created: ', url)
 
         //getting Blurhash
         //instead of using the encodeImageToBlurhush function I will just use encode,
         //as we already have used loadImage and getImageData to get image dimensions 
         //const createdBlurhash = await encodeImageToBlurhash(tempURL)
         const createdBlurhash = encode(loadedImageData.data, loadedImageData.width, loadedImageData.height, 4, 4);
-        console.log('Blurhash optimized image version created: ', createdBlurhash)
+        //console.log('Blurhash optimized image version created: ', createdBlurhash)
 
         //creating a doc in the database to add description/category
         await addDoc(colRef, {Blurhash: createdBlurhash, Category: category, Description: description, Link: url})
