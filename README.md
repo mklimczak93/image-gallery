@@ -10,15 +10,19 @@ The most interesting aspects:
 ## Images
 
 ![Main-page-01](https://github.com/mklimczak93/image-gallery/assets/123643355/fdfc94b7-1e1e-4815-9eb2-d59852f13839)
+
 Main page - desktop view
 
 ![Main-page-02](https://github.com/mklimczak93/image-gallery/assets/123643355/c5f8c688-79fa-462a-adf2-22371636bf12)
+
 Main page - tablet view
 
 ![Main-page-03](https://github.com/mklimczak93/image-gallery/assets/123643355/9fc18c48-6220-40e9-b8fe-973ea9bf33e1)
+
 Main page - mobile view
 
 ![Add-01](https://github.com/mklimczak93/image-gallery/assets/123643355/c27bb937-c693-4f1c-9626-d6df08758836)
+
 Editing dashboard - tablet view
 
 
