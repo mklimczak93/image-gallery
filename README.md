@@ -1,5 +1,7 @@
 # Image Gallery App
 
+https://agnieszkaklimczak.com/
+
 A custom made website for a painter, with publicly open part serving as an image gallery and an owner-only-access dashboard to add/remove/edit paintings.
 Application was created using React and Firebase (storage, database, auth).
 
